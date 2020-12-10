@@ -2,8 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
+import New from '../../components/New';
 
 const Home: React.FC = () => {
+  const navigation = useNavigation();
+
   return(
     <ScrollView showsHorizontalScrollIndicator={false} style={{ backgroundColor:'#fff' }}>
       <View style={styles.header}>
@@ -15,6 +20,34 @@ const Home: React.FC = () => {
           />
         </View>
       </View>
+
+      <View style={styles.contentNew}>
+        <Text style={styles.title}>Novidades</Text>
+      </View>
+
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingHorizontal:15, }}>
+        <New
+          cover={require('../../assets/house1.jpg')}
+          name="Casa de praia"
+          description="Casa nova com quadra do mar, lugar seguro e monitorado 24horas"
+          onPress={()=>navigation.navigate('detail')}
+        />
+
+        <New
+          cover={require('../../assets/house2.jpg')}
+          name="Casa de praia"
+          description="Casa nova com quadra do mar, lugar seguro e monitorado 24horas"
+          onPress={()=>navigation.navigate('detail')}
+        />
+
+        <New
+          cover={require('../../assets/house3.jpg')}
+          name="Casa de praia"
+          description="Casa nova com quadra do mar, lugar seguro e monitorado 24horas"
+          onPress={()=>navigation.navigate('detail')}
+        />
+      </ScrollView>
+
     </ScrollView>
   )
 }
@@ -46,6 +79,19 @@ const styles = StyleSheet.create({
     paddingHorizontal:10,
     fontSize:13,
     width:'90%'
+  },
+
+  contentNew:{
+    flexDirection:'row',
+    width:'100%',
+    alignItems:'center'
+  },
+
+  title:{
+    paddingHorizontal:15,
+    fontFamily:'Montserrat_700Bold',
+    fontSize:18,
+    color:'#4f4a4a'
   }
 })
 
